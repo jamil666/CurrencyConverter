@@ -1,0 +1,51 @@
+
+ <html>
+  <head>
+      <link rel="icon" href="http://vistablog.com.ua/Forex/images/favicon_300x300.png" type="image/png">
+     <title>Currency Converter</title>
+
+  </head>
+
+    <body>
+
+        <div align="center" title="MainPage">
+
+        <h1> Currency course for {{ date }} </h1>
+
+        <div id="currency">
+
+        <table border="3" align="center" cellpadding="10" width="30%" height="15%"  >
+
+            <tr> <td> <h2 style='color:#0c08ff' class="USD" align="center"> USD: </h2></td> <td><h2 style='color:#0c08ff' class="USD" align="center">{{ USD }} </h2> </td> </tr>
+            <tr> <td> <h2 style='color:#0c08ff' class="EURO" align="center"> EURO: </h2></td> <td><h2 style='color:#0c08ff' class="EURO" align="center">{{ EURO }} </h2> </td> </tr>
+            <tr> <td> <h2 style='color:#0c08ff' class="GBP" align="center"> GBP: </h2></td> <td><h2 style='color:#0c08ff' class="GBP" align="center">{{ GBP }} </h2> </td> </tr>
+
+        </table>
+
+        </div>
+
+
+        <h1> Currency Converter </h1>
+
+        <form action="page.html" method="post">
+            <div align="center">
+            {% csrf_token %}
+
+            {{ Sourceform }}
+
+            {{ Value }}
+
+            {{ Destinationform }}
+
+            </div>
+
+        </br>
+            <input type="submit" value="Convert" >
+        </form>
+
+            <strong style="font-size: 35px"> Amount is: {{ Summa }}  </strong>
+
+        </div>
+
+    </body>
+</html>
