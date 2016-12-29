@@ -33,16 +33,6 @@ def page(request):
     }
 
     if request.method == 'POST':
-        context = {
-            "USD": str(valyuta.usd),
-            "EURO": str(valyuta.euro),
-            "GBP": str(valyuta.gbp),
-            "RUB": str(valyuta.rub),
-            "date": datetime.now(),
-            "Sourceform": Sourceform,
-            "Destinationform": Destinationform,
-            "Value": Value,
-        }
 
         if Sourceform.is_valid() and Destinationform.is_valid():    # POST validation check
 
