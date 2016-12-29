@@ -21,36 +21,36 @@ def page(request):
 
 ################################### Calculator ##########################################
 
+    context = {
+        "USD": str(valyuta.usd),
+        "EURO": str(valyuta.euro),
+        "GBP": str(valyuta.gbp),
+        "RUB": str(valyuta.rub),
+        "date": datetime.now(),
+        "Sourceform": Sourceform,
+        "Destinationform": Destinationform,
+        "Value": Value,
+    }
+
     if request.method == 'POST':
+        context = {
+            "USD": str(valyuta.usd),
+            "EURO": str(valyuta.euro),
+            "GBP": str(valyuta.gbp),
+            "RUB": str(valyuta.rub),
+            "date": datetime.now(),
+            "Sourceform": Sourceform,
+            "Destinationform": Destinationform,
+            "Value": Value,
+        }
 
         if Sourceform.is_valid() and Destinationform.is_valid():    # POST validation check
-
-            context = {
-                "USD": str(valyuta.usd),
-                "EURO": str(valyuta.euro),
-                "GBP": str(valyuta.gbp),
-                "RUB": str(valyuta.rub),
-                "date": datetime.now(),
-                "Sourceform": Sourceform,
-                "Destinationform": Destinationform,
-                "Value": Value,
-            }
 
             if request.POST['source_choice_field'] == "AZN" and request.POST['destination_choice_field'] == "USD":
                 summa = float(request.POST['input_field']) / valyuta.usd    # Convert value from AZN to USD
                 summa = round(summa, 4).__str__() + " " + "$"               # Show first 4 digits after comma and + $
 
-                context = {
-                    "USD": str(valyuta.usd),
-                    "EURO": str(valyuta.euro),
-                    "GBP": str(valyuta.gbp),
-                    "RUB": str(valyuta.rub),
-                    "date": datetime.now(),
-                    "Sourceform": Sourceform,
-                    "Destinationform": Destinationform,
-                    "Value": Value,
-                    "Summa": summa      # Added converted value to context dictionary
-                }
+                context["Summa"] = summa      # Added converted value to context dictionary
 
                 return render(request, 'page.html', context)
 
@@ -58,17 +58,7 @@ def page(request):
                 summa = float(request.POST['input_field']) * valyuta.usd    # Convert value from USD to AZN
                 summa = round(summa, 4).__str__() + " " + "AZN"             # Show first 4 digits after comma and + AZN
 
-                context = {
-                    "USD": str(valyuta.usd),
-                    "EURO": str(valyuta.euro),
-                    "GBP": str(valyuta.gbp),
-                    "RUB": str(valyuta.rub),
-                    "date": datetime.now(),
-                    "Sourceform": Sourceform,
-                    "Destinationform": Destinationform,
-                    "Value": Value,
-                    "Summa": summa      # Added converted value to context dictionary
-                }
+                context["Summa"] = summa  # Added converted value to context dictionary
 
                 return render(request, 'page.html', context)
 
@@ -76,17 +66,7 @@ def page(request):
                 summa = float(request.POST['input_field']) / valyuta.euro   # Convert value from AZN to EURO
                 summa = round(summa, 4).__str__() + " " + "€"               # Show first 4 digits after comma and + €
 
-                context = {
-                    "USD": str(valyuta.usd),
-                    "EURO": str(valyuta.euro),
-                    "GBP": str(valyuta.gbp),
-                    "RUB": str(valyuta.rub),
-                    "date": datetime.now(),
-                    "Sourceform": Sourceform,
-                    "Destinationform": Destinationform,
-                    "Value": Value,
-                    "Summa": summa      # Added converted value to context dictionary
-                }
+                context["Summa"] = summa  # Added converted value to context dictionary
 
                 return render(request, 'page.html', context)
 
@@ -94,17 +74,7 @@ def page(request):
                 summa = float(request.POST['input_field']) * valyuta.euro   # Convert value from EURO to AZN
                 summa = round(summa, 4).__str__() + " " + "AZN"             # Show first 4 digits after comma and + AZN
 
-                context = {
-                    "USD": str(valyuta.usd),
-                    "EURO": str(valyuta.euro),
-                    "GBP": str(valyuta.gbp),
-                    "RUB": str(valyuta.rub),
-                    "date": datetime.now(),
-                    "Sourceform": Sourceform,
-                    "Destinationform": Destinationform,
-                    "Value": Value,
-                    "Summa": summa      # Added converted value to context dictionary
-                }
+                context["Summa"] = summa  # Added converted value to context dictionary
 
                 return render(request, 'page.html', context)
 
@@ -112,17 +82,7 @@ def page(request):
                 summa = float(request.POST['input_field']) / valyuta.gbp    # Convert value from AZN to GBP
                 summa = round(summa, 4).__str__() + " " + "£"               # Show first 4 digits after comma and + £
 
-                context = {
-                    "USD": str(valyuta.usd),
-                    "EURO": str(valyuta.euro),
-                    "GBP": str(valyuta.gbp),
-                    "RUB": str(valyuta.rub),
-                    "date": datetime.now(),
-                    "Sourceform": Sourceform,
-                    "Destinationform": Destinationform,
-                    "Value": Value,
-                    "Summa": summa      # Added converted value to context dictionary
-                }
+                context["Summa"] = summa  # Added converted value to context dictionary
 
                 return render(request, 'page.html', context)
 
@@ -130,17 +90,7 @@ def page(request):
                 summa = float(request.POST['input_field']) / valyuta.gbp    # Convert value from GBP to AZN
                 summa = round(summa, 4).__str__() + " " + "AZN"             # Show first 4 digits after comma and + AZN
 
-                context = {
-                    "USD": str(valyuta.usd),
-                    "EURO": str(valyuta.euro),
-                    "GBP": str(valyuta.gbp),
-                    "RUB": str(valyuta.rub),
-                    "date": datetime.now(),
-                    "Sourceform": Sourceform,
-                    "Destinationform": Destinationform,
-                    "Value": Value,
-                    "Summa": summa      # Added converted value to context dictionary
-                }
+                context["Summa"] = summa  # Added converted value to context dictionary
 
                 return render(request, 'page.html', context)
 
@@ -148,17 +98,7 @@ def page(request):
                 summa = float(request.POST['input_field']) / valyuta.rub    # Convert value from AZN to RUB
                 summa = round(summa, 4).__str__() + " " + "RUB"               # Show first 4 digits after comma and + $
 
-                context = {
-                    "USD": str(valyuta.usd),
-                    "EURO": str(valyuta.euro),
-                    "GBP": str(valyuta.gbp),
-                    "RUB": str(valyuta.rub),
-                    "date": datetime.now(),
-                    "Sourceform": Sourceform,
-                    "Destinationform": Destinationform,
-                    "Value": Value,
-                    "Summa": summa      # Added converted value to context dictionary
-                }
+                context["Summa"] = summa  # Added converted value to context dictionary
 
                 return render(request, 'page.html', context)
 
@@ -166,33 +106,10 @@ def page(request):
                 summa = float(request.POST['input_field']) * valyuta.rub    # Convert value from RUB to AZN
                 summa = round(summa, 4).__str__() + " " + "AZN"             # Show first 4 digits after comma and + AZN
 
-                context = {
-                    "USD": str(valyuta.usd),
-                    "EURO": str(valyuta.euro),
-                    "GBP": str(valyuta.gbp),
-                    "RUB": str(valyuta.rub),
-                    "date": datetime.now(),
-                    "Sourceform": Sourceform,
-                    "Destinationform": Destinationform,
-                    "Value": Value,
-                    "Summa": summa      # Added converted value to context dictionary
-                }
+                context["Summa"] = summa  # Added converted value to context dictionary
 
                 return render(request, 'page.html', context)
 
-
-
             return render(request, 'page.html', context)
-
-    context = {
-        "USD" : str(valyuta.usd),
-        "EURO": str(valyuta.euro),
-        "GBP" : str(valyuta.gbp),
-        "RUB": str(valyuta.rub),
-        "date" : datetime.now(),
-        "Sourceform": Sourceform,
-        "Destinationform": Destinationform,
-        "Value": Value,
-              }
 
     return render (request, 'page.html', context)
