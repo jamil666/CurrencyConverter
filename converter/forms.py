@@ -6,7 +6,8 @@ class ChoiceSource(forms.Form):
                 ('AZN', 'AZN'),
                 ('USD', 'USD'),
                 ('EURO', 'EURO'),
-                ('GBP', 'GBP')), required=False, label=False, )
+                ('GBP', 'GBP'),
+                ('RUB', 'RUB')),required=False, label=False, )
 
 
 class ChoiceDestination(forms.Form):
@@ -14,7 +15,8 @@ class ChoiceDestination(forms.Form):
         ('AZN', 'AZN'),
         ('USD', 'USD'),
         ('EURO', 'EURO'),
-        ('GBP', 'GBP')), required=False, label="", )
+        ('GBP', 'GBP'),
+        ('RUB', 'RUB')),required=False, label="", )
 
 
 class Input(forms.Form):

@@ -11,6 +11,7 @@ def page(request):
     db_tables = Currency(USD=valyuta.usd,
                          EURO=valyuta.euro,
                          GBP=valyuta.gbp,
+                         RUB=valyuta.rub,
                          Date=datetime.now())
     db_tables.save()    # Save values to database
 
@@ -28,6 +29,7 @@ def page(request):
                 "USD": str(valyuta.usd),
                 "EURO": str(valyuta.euro),
                 "GBP": str(valyuta.gbp),
+                "RUB": str(valyuta.rub),
                 "date": datetime.now(),
                 "Sourceform": Sourceform,
                 "Destinationform": Destinationform,
@@ -42,6 +44,7 @@ def page(request):
                     "USD": str(valyuta.usd),
                     "EURO": str(valyuta.euro),
                     "GBP": str(valyuta.gbp),
+                    "RUB": str(valyuta.rub),
                     "date": datetime.now(),
                     "Sourceform": Sourceform,
                     "Destinationform": Destinationform,
@@ -59,6 +62,7 @@ def page(request):
                     "USD": str(valyuta.usd),
                     "EURO": str(valyuta.euro),
                     "GBP": str(valyuta.gbp),
+                    "RUB": str(valyuta.rub),
                     "date": datetime.now(),
                     "Sourceform": Sourceform,
                     "Destinationform": Destinationform,
@@ -76,6 +80,7 @@ def page(request):
                     "USD": str(valyuta.usd),
                     "EURO": str(valyuta.euro),
                     "GBP": str(valyuta.gbp),
+                    "RUB": str(valyuta.rub),
                     "date": datetime.now(),
                     "Sourceform": Sourceform,
                     "Destinationform": Destinationform,
@@ -93,6 +98,7 @@ def page(request):
                     "USD": str(valyuta.usd),
                     "EURO": str(valyuta.euro),
                     "GBP": str(valyuta.gbp),
+                    "RUB": str(valyuta.rub),
                     "date": datetime.now(),
                     "Sourceform": Sourceform,
                     "Destinationform": Destinationform,
@@ -110,6 +116,7 @@ def page(request):
                     "USD": str(valyuta.usd),
                     "EURO": str(valyuta.euro),
                     "GBP": str(valyuta.gbp),
+                    "RUB": str(valyuta.rub),
                     "date": datetime.now(),
                     "Sourceform": Sourceform,
                     "Destinationform": Destinationform,
@@ -127,6 +134,43 @@ def page(request):
                     "USD": str(valyuta.usd),
                     "EURO": str(valyuta.euro),
                     "GBP": str(valyuta.gbp),
+                    "RUB": str(valyuta.rub),
+                    "date": datetime.now(),
+                    "Sourceform": Sourceform,
+                    "Destinationform": Destinationform,
+                    "Value": Value,
+                    "Summa": summa      # Added converted value to context dictionary
+                }
+
+                return render(request, 'page.html', context)
+
+            if request.POST['source_choice_field'] == "AZN" and request.POST['destination_choice_field'] == "RUB":
+                summa = float(request.POST['input_field']) / valyuta.rub    # Convert value from AZN to RUB
+                summa = round(summa, 4).__str__() + " " + "RUB"               # Show first 4 digits after comma and + $
+
+                context = {
+                    "USD": str(valyuta.usd),
+                    "EURO": str(valyuta.euro),
+                    "GBP": str(valyuta.gbp),
+                    "RUB": str(valyuta.rub),
+                    "date": datetime.now(),
+                    "Sourceform": Sourceform,
+                    "Destinationform": Destinationform,
+                    "Value": Value,
+                    "Summa": summa      # Added converted value to context dictionary
+                }
+
+                return render(request, 'page.html', context)
+
+            if request.POST['source_choice_field'] == "RUB" and request.POST['destination_choice_field'] == "AZN":
+                summa = float(request.POST['input_field']) * valyuta.rub    # Convert value from RUB to AZN
+                summa = round(summa, 4).__str__() + " " + "AZN"             # Show first 4 digits after comma and + AZN
+
+                context = {
+                    "USD": str(valyuta.usd),
+                    "EURO": str(valyuta.euro),
+                    "GBP": str(valyuta.gbp),
+                    "RUB": str(valyuta.rub),
                     "date": datetime.now(),
                     "Sourceform": Sourceform,
                     "Destinationform": Destinationform,
@@ -144,6 +188,7 @@ def page(request):
         "USD" : str(valyuta.usd),
         "EURO": str(valyuta.euro),
         "GBP" : str(valyuta.gbp),
+        "RUB": str(valyuta.rub),
         "date" : datetime.now(),
         "Sourceform": Sourceform,
         "Destinationform": Destinationform,
