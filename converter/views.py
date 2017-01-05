@@ -43,6 +43,7 @@ def page(request):
     }
 
 
+
     if request.method == 'POST':
 
         if Sourceform.is_valid() and Destinationform.is_valid():    # POST validation check
@@ -128,9 +129,5 @@ def page(request):
                 return render(request, 'page.html', context)
 
             return render(request, 'page.html', context)
-
-        if request.method == 'GET':
-            print(request.GET['source_choice_field'])
-
 
     return render (request, 'page.html', context)
