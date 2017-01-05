@@ -1,8 +1,10 @@
+from PIL import Image
 from django.shortcuts import render
 from.aplication import valyuta
 from datetime import datetime
 from .models import Currency
 from .forms import ChoiceSource, ChoiceDestination, Input
+
 
 def page(request):
 
@@ -21,6 +23,12 @@ def page(request):
 
 ################################### Calculator ##########################################
 
+    AZflag = "/static/images/AZ.png"
+    USflag = "/static/images/US.png"
+    UKflag = "/static/images/UK.png"
+    RUflag = "/static/images/RU.png"
+    EUROflag = "/static/images/Euro.png"
+
     context = {
         "USD": str(valyuta.usd),
         "EURO": str(valyuta.euro),
@@ -30,7 +38,10 @@ def page(request):
         "Sourceform": Sourceform,
         "Destinationform": Destinationform,
         "Value": Value,
+        "Flag1": AZflag,
+        "Flag2": AZflag
     }
+
 
     if request.method == 'POST':
 
@@ -41,6 +52,8 @@ def page(request):
                 summa = round(summa, 4).__str__() + " " + "$"               # Show first 4 digits after comma and + $
 
                 context["Summa"] = summa      # Added converted value to context dictionary
+                context["Flag1"] = AZflag
+                context["Flag2"] = USflag
 
                 return render(request, 'page.html', context)
 
@@ -49,6 +62,8 @@ def page(request):
                 summa = round(summa, 4).__str__() + " " + "AZN"             # Show first 4 digits after comma and + AZN
 
                 context["Summa"] = summa  # Added converted value to context dictionary
+                context["Flag1"] = USflag
+                context["Flag2"] = AZflag
 
                 return render(request, 'page.html', context)
 
@@ -57,6 +72,8 @@ def page(request):
                 summa = round(summa, 4).__str__() + " " + "€"               # Show first 4 digits after comma and + €
 
                 context["Summa"] = summa  # Added converted value to context dictionary
+                context["Flag1"] = AZflag
+                context["Flag2"] = EUROflag
 
                 return render(request, 'page.html', context)
 
@@ -65,6 +82,8 @@ def page(request):
                 summa = round(summa, 4).__str__() + " " + "AZN"             # Show first 4 digits after comma and + AZN
 
                 context["Summa"] = summa  # Added converted value to context dictionary
+                context["Flag1"] = EUROflag
+                context["Flag2"] = AZflag
 
                 return render(request, 'page.html', context)
 
@@ -73,6 +92,8 @@ def page(request):
                 summa = round(summa, 4).__str__() + " " + "£"               # Show first 4 digits after comma and + £
 
                 context["Summa"] = summa  # Added converted value to context dictionary
+                context["Flag1"] = AZflag
+                context["Flag2"] = UKflag
 
                 return render(request, 'page.html', context)
 
@@ -81,6 +102,8 @@ def page(request):
                 summa = round(summa, 4).__str__() + " " + "AZN"             # Show first 4 digits after comma and + AZN
 
                 context["Summa"] = summa  # Added converted value to context dictionary
+                context["Flag1"] = UKflag
+                context["Flag2"] = AZflag
 
                 return render(request, 'page.html', context)
 
@@ -89,6 +112,8 @@ def page(request):
                 summa = round(summa, 4).__str__() + " " + "RUB"               # Show first 4 digits after comma and + $
 
                 context["Summa"] = summa  # Added converted value to context dictionary
+                context["Flag1"] = AZflag
+                context["Flag2"] = RUflag
 
                 return render(request, 'page.html', context)
 
@@ -97,9 +122,15 @@ def page(request):
                 summa = round(summa, 4).__str__() + " " + "AZN"             # Show first 4 digits after comma and + AZN
 
                 context["Summa"] = summa  # Added converted value to context dictionary
+                context["Flag1"] = RUflag
+                context["Flag2"] = AZflag
 
                 return render(request, 'page.html', context)
 
             return render(request, 'page.html', context)
+
+        if request.method == 'GET':
+            print(request.GET['source_choice_field'])
+
 
     return render (request, 'page.html', context)

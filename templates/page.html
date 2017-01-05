@@ -25,18 +25,29 @@
 
         </div>
 
-
         <h1> Currency Converter </h1>
+
+
 
         <form action="page.html" method="post">
             <div align="center">
             {% csrf_token %}
 
-            {{ Sourceform }}
+            <img src= "{{ Flag1 }}"
+
+                 width="35"
+                 height="20" style="vertical-align: middle">
+
+            {{ Sourceform}}
 
             {{ Value }}
 
             {{ Destinationform }}
+
+            <img src= "{{ Flag2 }}"
+
+                 width="35"
+                 height="20" style="vertical-align: middle">
 
             </div>
 
