@@ -1,0 +1,72 @@
+
+<html>
+<head>
+
+<title>Currency Converter</title>
+
+    {% load static %}
+
+    <link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css" media="all" />
+
+
+</head>
+<body>
+
+<marquee direction="left" scrolldelay="90" scrollamount="6" behavior="scroll" loop="0"
+         style="position:absolute;left:0px;top:0px;width:1298px;height:48px;z-index:0;" id="Marquee1"><span style="color:#FFFFFF;font-size:37px;">Currency course for {{ date }} </span></marquee>
+
+<img src="{% static "images/img0001.jpg" %}" id="Currency_Converter" alt="Currency Converter"
+     style="border-width:0;position:absolute;left:0px;top:345px;width:1300px;height:50px;z-index:1;">
+
+<table style="position:absolute;left:428px;top:89px;width:444px;height:206px;z-index:3;" id="Table1">
+<tr>
+<td class="cell0"><span style="color:#000000;"> </span><span style="color:#FFFFFF;"><strong>USD</strong></span></td>
+<td class="cell1"><span style="color:#000000;"> </span><span style="color:#FFFFFF;"><strong>{{ USD }}</strong></span></td>
+</tr>
+<tr>
+<td class="cell0"><span style="color:#000000;"> </span><span style="color:#FFFFFF;"><strong>EURO</strong></span></td>
+<td class="cell1"><span style="color:#000000;"> </span><span style="color:#FFFFFF;"><strong>{{ EURO }}</strong></span></td>
+</tr>
+<tr>
+<td class="cell0"><span style="color:#000000;"> </span><span style="color:#FFFFFF;"><strong>GBP</strong></span></td>
+<td class="cell1"><span style="color:#000000;"> </span><span style="color:#FFFFFF;"><strong>{{ GBP }}</strong></span></td>
+</tr>
+<tr>
+<td class="cell2"><span style="color:#000000;"> </span><span style="color:#FFFFFF;"><strong>RUB</strong></span></td>
+<td class="cell3"><span style="color:#000000;"> </span><span style="color:#FFFFFF;"><strong>{{ RUB }}</strong></span></td>
+</tr>
+</table>
+
+</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+
+    <form action='index.html' method="post">
+                <div align="center">
+                {% csrf_token %}
+
+                <img src= "{{ Flag1 }}"
+                     width="35"
+                     height="20" style="vertical-align: middle">
+
+                {{ Sourceform}}
+
+                {{ Value }}
+
+                {{ Destinationform }}
+
+                <img src= "{{ Flag2 }}"
+                     width="35"
+                     height="20" style="vertical-align: middle">
+
+                </div>
+
+                <input type="submit" id="Button1" name="Convert" value="Convert"
+                       style="position:absolute;left:576px;top:564px;width:149px;height:49px;z-index:4;" autofocus>
+            </form>
+
+<div id="Banner1" style="position:absolute;left:0px;top:661px;width:1298px;height:97px;z-index:2"><span></span></div>
+<div id="wb_Text1"  style="position:absolute;left:513px;top:698px;width:275px;height:24px;z-index:5;text-align:center;">
+<span style="color:#FFFFFF;font-family:Arial;font-size:20px;"><strong>Amount is: {{Summa}}</strong></span></div>
+
+</body>
+</html>

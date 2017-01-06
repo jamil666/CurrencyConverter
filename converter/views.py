@@ -1,4 +1,4 @@
-from PIL import Image
+
 from django.shortcuts import render
 from.aplication import valyuta
 from datetime import datetime
@@ -56,7 +56,7 @@ def page(request):
                 context["Flag1"] = AZflag
                 context["Flag2"] = USflag
 
-                return render(request, 'page.html', context)
+                return render(request, 'index.html', context)
 
             if request.POST['source_choice_field'] == "USD" and request.POST['destination_choice_field'] == "AZN":
                 summa = float(request.POST['input_field']) * valyuta.usd    # Convert value from USD to AZN
@@ -66,7 +66,7 @@ def page(request):
                 context["Flag1"] = USflag
                 context["Flag2"] = AZflag
 
-                return render(request, 'page.html', context)
+                return render(request, 'index.html', context)
 
             if request.POST['source_choice_field'] == "AZN" and request.POST['destination_choice_field'] == "EURO":
                 summa = float(request.POST['input_field']) / valyuta.euro   # Convert value from AZN to EURO
@@ -76,7 +76,7 @@ def page(request):
                 context["Flag1"] = AZflag
                 context["Flag2"] = EUROflag
 
-                return render(request, 'page.html', context)
+                return render(request, 'index.html', context)
 
             if request.POST['source_choice_field'] == "EURO" and request.POST['destination_choice_field'] == "AZN":
                 summa = float(request.POST['input_field']) * valyuta.euro   # Convert value from EURO to AZN
@@ -86,7 +86,7 @@ def page(request):
                 context["Flag1"] = EUROflag
                 context["Flag2"] = AZflag
 
-                return render(request, 'page.html', context)
+                return render(request, 'index.html', context)
 
             if request.POST['source_choice_field'] == "AZN" and request.POST['destination_choice_field'] == "GBP":
                 summa = float(request.POST['input_field']) / valyuta.gbp    # Convert value from AZN to GBP
@@ -96,7 +96,7 @@ def page(request):
                 context["Flag1"] = AZflag
                 context["Flag2"] = UKflag
 
-                return render(request, 'page.html', context)
+                return render(request, 'index.html', context)
 
             if request.POST['source_choice_field'] == "GBP" and request.POST['destination_choice_field'] == "AZN":
                 summa = float(request.POST['input_field']) / valyuta.gbp    # Convert value from GBP to AZN
@@ -106,7 +106,7 @@ def page(request):
                 context["Flag1"] = UKflag
                 context["Flag2"] = AZflag
 
-                return render(request, 'page.html', context)
+                return render(request, 'index.html', context)
 
             if request.POST['source_choice_field'] == "AZN" and request.POST['destination_choice_field'] == "RUB":
                 summa = float(request.POST['input_field']) / valyuta.rub    # Convert value from AZN to RUB
@@ -116,7 +116,7 @@ def page(request):
                 context["Flag1"] = AZflag
                 context["Flag2"] = RUflag
 
-                return render(request, 'page.html', context)
+                return render(request, 'index.html', context)
 
             if request.POST['source_choice_field'] == "RUB" and request.POST['destination_choice_field'] == "AZN":
                 summa = float(request.POST['input_field']) * valyuta.rub    # Convert value from RUB to AZN
@@ -126,8 +126,8 @@ def page(request):
                 context["Flag1"] = RUflag
                 context["Flag2"] = AZflag
 
-                return render(request, 'page.html', context)
+                return render(request, 'index.html', context)
 
-            return render(request, 'page.html', context)
+            return render(request, 'index.html', context)
 
-    return render (request, 'page.html', context)
+    return render (request, 'index.html', context)
